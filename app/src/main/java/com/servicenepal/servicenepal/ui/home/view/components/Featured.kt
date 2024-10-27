@@ -1,23 +1,25 @@
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.ArrowOutward
+import androidx.compose.material.icons.filled.SubdirectoryArrowRight
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.servicenepal.servicenepal.ui.home.model.FeaturedItem
-import androidx.compose.foundation.background
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.SubdirectoryArrowRight
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.ui.graphics.Color
 
 @Composable
 fun Featured(bannerItems: List<FeaturedItem>) {
@@ -27,11 +29,11 @@ fun Featured(bannerItems: List<FeaturedItem>) {
             .padding(horizontal = 10.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        items(bannerItems) { item -> // Use the FeaturedItem model
+        items(bannerItems) { item ->
             Box(
                 modifier = Modifier
                     .width(200.dp)
-                    .height(250.dp) // Increased height to fit text and button
+                    .height(150.dp)
             ) {
                 Card(
                     modifier = Modifier.fillMaxSize(),
@@ -45,28 +47,28 @@ fun Featured(bannerItems: List<FeaturedItem>) {
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .weight(1f) // Use weight to fill remaining space
+                                .weight(1f)
                         )
 
                         // Text and Button Section
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .background(Color.White) // Background color for text area
-                                .padding(8.dp), // Padding around the text
+                                .background(Color.White)
+                                .padding(8.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
                                 text = item.caption,
-                                color = Color.Black // Change text color to black for contrast
+                                color = Color.Black
                             )
-                            Button(
+                            IconButton(
                                 onClick = { /* Handle click here */ },
                                 modifier = Modifier.size(40.dp)
                             ) {
                                 Icon(
-                                    imageVector = Icons.Filled.SubdirectoryArrowRight,
+                                    imageVector = Icons.Filled.ArrowForward,
                                     contentDescription = "Arrow Forward"
                                 )
                             }

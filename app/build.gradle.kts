@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.benchmark.macro)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -109,5 +111,6 @@ dependencies {
     implementation(libs.androidx.runtime.rxjava2)
     implementation(libs.coil.compose) // For image loading
     implementation(libs.androidx.lifecycle.runtime.ktx.v262) // Optional, if you need lifecycle components
+    implementation(libs.androidx.navigation.compose.v253) // Use the latest version
 
 }

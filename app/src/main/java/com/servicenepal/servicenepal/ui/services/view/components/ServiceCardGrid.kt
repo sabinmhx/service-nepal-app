@@ -15,32 +15,40 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun ServiceCardGrid(service: ServiceItems) {
     Card(
+        shape = RoundedCornerShape(12.dp),
+        elevation = 8.dp,
+        backgroundColor = MaterialTheme.colorScheme.surface,
         modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1f),
-        elevation = 4.dp,
-        shape = RoundedCornerShape(16.dp)
+            .size(100.dp) // Fixed size for consistency
+            .padding(4.dp)
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp)
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .fillMaxSize()
+                .padding(8.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
                 imageVector = service.icon,
                 contentDescription = service.name,
-                modifier = Modifier.size(48.dp),
+                modifier = Modifier.size(30.dp),
                 tint = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = service.name, style = MaterialTheme.typography.bodyMedium)
+            Text(
+                text = service.name,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }

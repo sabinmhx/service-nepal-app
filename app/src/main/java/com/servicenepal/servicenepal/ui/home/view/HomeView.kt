@@ -1,4 +1,3 @@
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.rememberPagerState
@@ -10,9 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MiscellaneousServices
 import androidx.compose.ui.draw.clip
 import com.servicenepal.servicenepal.ui.home.model.FeaturedItem
 
@@ -26,68 +26,75 @@ fun HomeView() {
     val favoritesPagerState = rememberPagerState(pageCount = { favorites.size })
 
     val featured = listOf(
-        FeaturedItem("https://th.bing.com/th/id/OIP.DugIIyks79SZ1i1ognqDZQHaEc?rs=1&pid=ImgDetMain", "Image 1 Description"),
-        FeaturedItem("https://th.bing.com/th/id/OIP.DugIIyks79SZ1i1ognqDZQHaEc?rs=1&pid=ImgDetMain", "Image 2 Description"),
-        FeaturedItem("https://th.bing.com/th/id/OIP.DugIIyks79SZ1i1ognqDZQHaEc?rs=1&pid=ImgDetMain", "Image 3 Description")
+        FeaturedItem(
+            "https://th.bing.com/th/id/OIP.DugIIyks79SZ1i1ognqDZQHaEc?rs=1&pid=ImgDetMain",
+            "Image 1 Description"
+        ),
+        FeaturedItem(
+            "https://th.bing.com/th/id/OIP.DugIIyks79SZ1i1ognqDZQHaEc?rs=1&pid=ImgDetMain",
+            "Image 2 Description"
+        ),
+        FeaturedItem(
+            "https://th.bing.com/th/id/OIP.DugIIyks79SZ1i1ognqDZQHaEc?rs=1&pid=ImgDetMain",
+            "Image 3 Description"
+        )
     )
     // Use a verticalScroll to make the whole page scrollable
     Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+        Text(
+            text = "Favorites",
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+                .padding(16.dp)
+                .align(Alignment.Start)
+        )
+
+        Favorites(favorites, favoritesPagerState)
+
+        DotsIndicator(currentIndex = favoritesPagerState.currentPage, totalDots = favorites.size)
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth() // Ensures it fills the width
+                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)) // Set the corner radius
+                .background(MaterialTheme.colorScheme.tertiary) // Change this to your desired color
+                .padding(top = 16.dp)
         ) {
-            Text(
-                text = "Favorites",
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.Start)
-            )
+            Column {
+                Text(
+                    text = "Featured",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.Start)
+                )
+                Featured(featured)
 
-            Favorites(favorites, favoritesPagerState)
+                Text(
+                    text = "Services",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.Start)
+                )
 
-            DotsIndicator(currentIndex = favoritesPagerState.currentPage, totalDots = favorites.size)
-
-
-
-            Box (
-                modifier = Modifier
-                    .fillMaxWidth() // Ensures it fills the width
-                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)) // Set the corner radius
-                    .background(MaterialTheme.colorScheme.tertiary) // Change this to your desired color
-                    .padding(top = 16.dp)
-            ){
-                Column {
-                    Text(
-                        text = "Featured",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .align(Alignment.Start)
-                    )
-                    Featured(featured) // Your existing Featured composable
-
-                    Text(
-                        text = "Services",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .align(Alignment.Start)
-                    )
-
-                    // LazyColumn for services is no longer needed, replaced with Column
-                    for (service in serviceList) {
-                        ServiceItem(service.iconResId, service.title)
-                    }
+                // LazyColumn for services is no longer needed, replaced with Column
+                for (service in serviceList) {
+                    ServiceItem(service.iconResId, service.title)
                 }
             }
-
-
         }
+
+
     }
+}
 
 
 @Composable
@@ -107,10 +114,16 @@ fun ServiceItem(iconResId: Int, title: String) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Load icon
-            Image(
-                painter = rememberAsyncImagePainter(iconResId),
-                contentDescription = null,
-                modifier = Modifier.size(40.dp) // Set icon size
+//            Image(
+//                painter = rememberAsyncImagePainter(iconResId),
+//                contentDescription = null,
+//                modifier = Modifier.size(40.dp) // Set icon size
+//            )
+            Icon(
+                imageVector = Icons.Filled.MiscellaneousServices,
+                contentDescription = "Add Card",
+                modifier = Modifier.size(40.dp),
+                tint = Color.Gray
             )
             Spacer(modifier = Modifier.width(16.dp)) // Space between icon and text
             Text(
