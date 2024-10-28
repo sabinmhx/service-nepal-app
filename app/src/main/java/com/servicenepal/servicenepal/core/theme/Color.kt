@@ -1,4 +1,4 @@
-package com.servicenepal.servicenepal.ui.theme
+package com.servicenepal.servicenepal.core.theme
 
 import androidx.compose.ui.graphics.Color
 

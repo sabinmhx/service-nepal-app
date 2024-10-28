@@ -1,4 +1,4 @@
-package com.servicenepal.servicenepal.ui.theme
+package com.servicenepal.servicenepal.core.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
