@@ -1,19 +1,31 @@
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MiscellaneousServices
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MiscellaneousServices
-import androidx.compose.ui.draw.clip
 import com.servicenepal.servicenepal.ui.home.model.FeaturedItem
 
 @Composable
@@ -46,7 +58,7 @@ fun HomeView() {
             .verticalScroll(rememberScrollState())
     ) {
         Text(
-            text = "Favorites",
+            text = "Favourites",
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
@@ -60,9 +72,9 @@ fun HomeView() {
 
         Box(
             modifier = Modifier
-                .fillMaxWidth() // Ensures it fills the width
-                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)) // Set the corner radius
-                .background(MaterialTheme.colorScheme.tertiary) // Change this to your desired color
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                .background(MaterialTheme.colorScheme.secondary)
                 .padding(top = 16.dp)
         ) {
             Column {
@@ -70,6 +82,7 @@ fun HomeView() {
                     text = "Featured",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSecondary,
                     modifier = Modifier
                         .padding(16.dp)
                         .align(Alignment.Start)
@@ -79,6 +92,7 @@ fun HomeView() {
                 Text(
                     text = "Services",
                     style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSecondary,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .padding(16.dp)

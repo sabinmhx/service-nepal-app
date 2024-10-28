@@ -1,14 +1,17 @@
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Business
+import androidx.compose.material.icons.filled.CreditCard
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
 fun BottomNavigationBar(selectedTabIndex: Int, onTabSelected: (Int) -> Unit) {
-    BottomNavigation {
+    BottomNavigation(
+    ) {
         BottomNavigationItem(
             icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
             label = { Text("Home") },

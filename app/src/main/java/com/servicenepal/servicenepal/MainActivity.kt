@@ -19,8 +19,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.servicenepal.servicenepal.core.components.AppBar
 import com.servicenepal.servicenepal.core.theme.ServiceNepalTheme
 
@@ -38,7 +36,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
-    
+
     Scaffold(
         topBar = { AppBar() },
         bottomBar = {
