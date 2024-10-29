@@ -1,5 +1,6 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -34,13 +35,15 @@ fun Featured(bannerItems: List<FeaturedItem>) {
                 modifier = Modifier
                     .width(200.dp)
                     .height(150.dp)
+                    .clickable {
+
+                    }
             ) {
                 Card(
                     modifier = Modifier.fillMaxSize(),
                     elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
                 ) {
                     Column {
-                        // Image Section
                         Image(
                             painter = rememberAsyncImagePainter(item.imageUrl),
                             contentDescription = null,
@@ -50,7 +53,6 @@ fun Featured(bannerItems: List<FeaturedItem>) {
                                 .weight(1f)
                         )
 
-                        // Text and Button Section
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -63,15 +65,12 @@ fun Featured(bannerItems: List<FeaturedItem>) {
                                 text = item.caption,
                                 color = Color.Black
                             )
-                            IconButton(
-                                onClick = { /* Handle click here */ },
-                                modifier = Modifier.size(40.dp)
-                            ) {
+
                                 Icon(
                                     imageVector = Icons.Filled.ArrowForward,
                                     contentDescription = "Arrow Forward"
                                 )
-                            }
+
                         }
                     }
                 }

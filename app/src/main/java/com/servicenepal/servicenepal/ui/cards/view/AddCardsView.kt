@@ -1,5 +1,3 @@
-package com.servicenepal.servicenepal.ui.cards.view
-
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,7 +10,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,8 +45,12 @@ fun AddCardsView(navController: NavController) {
         // Card Name TextField
         OutlinedTextField(
             value = cardName,
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = MaterialTheme.colorScheme.background,
+                focusedBorderColor = MaterialTheme.colorScheme.background
+            ),
             onValueChange = { cardName = it },
-            label = { Text("Card Name") },
+            label = { Text("Card Name", color = MaterialTheme.colorScheme.background) },
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -71,7 +75,6 @@ fun AddCardsView(navController: NavController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Save button to submit the card details
         Button(
             onClick = {
                 // Handle save action here

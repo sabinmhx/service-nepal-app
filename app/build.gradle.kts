@@ -111,6 +111,6 @@ dependencies {
     implementation(libs.androidx.runtime.rxjava2)
     implementation(libs.coil.compose) // For image loading
     implementation(libs.androidx.lifecycle.runtime.ktx.v262) // Optional, if you need lifecycle components
-    implementation(libs.androidx.navigation.compose.v253) // Use the latest version
+    implementation(libs.androidx.navigation.compose)
 
 }

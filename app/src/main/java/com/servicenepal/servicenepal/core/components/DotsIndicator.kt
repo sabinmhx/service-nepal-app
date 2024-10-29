@@ -21,7 +21,7 @@ fun DotsIndicator(currentIndex: Int, totalDots: Int) {
             .padding(vertical = 8.dp)
     ) {
         repeat(totalDots) { i ->
-            val dotColor = if (i == currentIndex) MaterialTheme.colorScheme.primary else Color.LightGray
+            val dotColor = if (i == currentIndex) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onSecondary
             Box(
                 modifier = Modifier
                     .size(8.dp)

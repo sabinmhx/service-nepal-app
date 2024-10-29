@@ -1,5 +1,6 @@
 package com.servicenepal.servicenepal
 
+import AddCardsView
 import BottomNavigationBar
 import CardsView
 import HomeView
@@ -19,6 +20,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.servicenepal.servicenepal.core.components.AppBar
 import com.servicenepal.servicenepal.core.theme.ServiceNepalTheme
 
@@ -36,29 +40,40 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
+    val navController = rememberNavController()
 
     Scaffold(
         topBar = { AppBar() },
         bottomBar = {
             BottomNavigationBar(
                 selectedTabIndex = selectedTabIndex,
-            ) { selectedTabIndex = it }
+            ) { index ->
+                selectedTabIndex = index
+                // Handle tab selection
+                when (index) {
+                    0 -> navController.navigate("home") // Navigate to Home
+                    1 -> navController.navigate("service") // Navigate to Service
+                    2 -> navController.navigate("cards") // Navigate to Cards
+                }
+            }
         }
     ) { paddingValues ->
         Surface(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
-            color = MaterialTheme.colorScheme.primary // Change this to desired background color
+            color = MaterialTheme.colorScheme.primary
         ) {
-            when (selectedTabIndex) {
-                0 -> HomeView()
-                1 -> ServiceView()
-                2 -> CardsView()
+            NavHost(navController, startDestination = "home") {
+                composable("home") { HomeView() }
+                composable("service") { ServiceView() }
+                composable("cards") { CardsView(navController) }
+                composable("addCards") { AddCardsView(navController) }
             }
         }
     }
 }
+
 
 
 @Preview(showBackground = true)
