@@ -51,7 +51,7 @@ fun MainApp() {
     if (showSplash) {
         SplashScreen(onTimeout = { showSplash = false })
     } else {
-        AuthenticationScreen(navController)
+        MainScreen(navController)
     }
 }
 
@@ -67,7 +67,7 @@ fun AuthenticationScreen(navController: NavHostController) {
 @Composable
 fun MainScreen(navController: NavHostController) {
     var selectedTabIndex by remember { mutableStateOf(0) }
-    
+
     Scaffold(
         topBar = { AppBar() },
         bottomBar = {
